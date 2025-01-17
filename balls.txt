@@ -2197,7 +2197,7 @@ local function GetGitSound(GithubSnd, SoundName)
                 sound.SoundId = (getcustomasset or getsynasset)(SoundName .. ".mp3")
                 return sound
             end
-local Jumpscare = GetGitSound("?raw=true","r")
+local Jumpscare = GetGitSound("https://github.com/Tinkgy111/The-Gloomy-Darkness-Audio-/blob/main/Screen_Recording_20230524-164509_YouTube.mp3?raw=true","r")
     Jumpscare.Parent = workspace
     Jumpscare.Volume = 5
 	Jumpscare:Play()
