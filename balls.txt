@@ -2188,6 +2188,19 @@ spawn(function()
 while task.wait() do
          local c = game.ReplicatedStorage.GameData.LatestRoom.Value
         if c >= 53 then
+local function GetGitSound(GithubSnd, SoundName)
+                local url = GithubSnd
+                if not isfile(SoundName .. ".mp3") then
+                    writefile(SoundName .. ".mp3", game:HttpGet(url))
+                end
+                local sound = Instance.new("Sound")
+                sound.SoundId = (getcustomasset or getsynasset)(SoundName .. ".mp3")
+                return sound
+            end
+local Jumpscare = GetGitSound("?raw=true","r")
+    Jumpscare.Parent = workspace
+    Jumpscare.Volume = 5
+	Jumpscare:Play()
 local function displayMessage(message)
     local screenGui = Instance.new("ScreenGui")
     screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
