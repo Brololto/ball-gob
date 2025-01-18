@@ -123,7 +123,6 @@ if workspace:FindFirstChild("SeekMovingNewClone")
         end
 game:GetService("ReplicatedStorage").GameData.LatestRoom:GetPropertyChangedSignal("Value"):Wait()
 
-
 local function rebound()
 if workspace:FindFirstChild("SeekMovingNewClone") 
         or workspace.CurrentRooms:FindFirstChild("50") 
@@ -144,7 +143,7 @@ wait(2.8)
             end
                              local thunda = GetGitSound("https://github.com/Brololto/Angler-sounds/blob/main/lv_0_20241221185002.mp3?raw=true", "thundas")
                 thunda.Parent = workspace
-                thunda.Volume = 5 
+                thunda.Volume = 5
                 thunda:Play()
     task.wait(3.3)
             ---====== Load spawner ======---
