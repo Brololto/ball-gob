@@ -621,37 +621,37 @@ entity:SetCallback("OnSpawned", function()
 workspace.Ripper.Spawn:Play()
 local workspace = game:GetService("Workspace")
 local silence = workspace:FindFirstChild("Ripper")
+local Players = game:GetService("Players")
+
+
+
+            
+-- Player and Character
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local HumanoidRootPart = character:WaitForChild("HumanoidRootPart")
 
 local hitbox = 35
-local hasExecuted = false -- Debounce variable
-
-if not silence then
-    warn("Model 'Silence' not found in Workspace!")
-    return
-end
-
 local RunService = game:GetService("RunService")
 
 RunService.Heartbeat:Connect(function()
-    if hasExecuted then return end -- Stop execution if already run
+local origin = silence.PrimaryPart.Position
+local direction = (HumanoidRootPart.Position - origin).Unit
 
-    for _, player in pairs(game.Players:GetPlayers()) do
-        if player.Character and player.Character:FindFirstChild("HumanoidRootPart") and player.Character:FindFirstChild("Humanoid") then
-            local range = (silence.PrimaryPart.Position - player.Character.HumanoidRootPart.Position).Magnitude
-            if range <= hitbox then
+local ray = Ray.new(origin, direction * hitbox)
+
+local result = workspace:Raycast(ray.Origin, ray.Direction)
+
+     if result and result.Instance.Parent == character then
+      
                 if not player.Character:GetAttribute("Hiding") then
                 dead = true
                       local Debris = game:GetService("Debris")
                       Debris:AddItem(silence, 0.00000000000000001)
                     ripperdeath() -- Execute your custom function
-                    hasExecuted = true
-                    hitbox = 0 -- Disable further detection
-                    break -- Exit the loop since it's a one-time event
-                end
-            end
-        end
-    end
-end)
+                    end
+end
+
 
 end)
 
