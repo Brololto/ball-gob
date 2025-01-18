@@ -652,7 +652,7 @@ local result = workspace:Raycast(ray.Origin, ray.Direction)
                     end
 end
 
-
+end?
 end)
 
 entity:SetCallback("OnStartMoving", function()
