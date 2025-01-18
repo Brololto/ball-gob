@@ -455,12 +455,21 @@ r.Parent = Workspace
 
 
 
--- Set Position Cam
+
+spawn(function()
+local Camera = workspace.CurrentCamera
+Camera.CameraType = Enum.CameraType.Scriptable
+    local cameraPosition = Camera.CFrame.Position
+    local modelPosition = r:GetPivot().Position
+local scene = TweenService:Create(Camera, TweenInfo.new(0.5), {CFrame = CFrame.new(cameraPosition, modelPosition)})
+scene:Play()
+scene.Completed:Wait()
 game:GetService("RunService").RenderStepped:Connect(function()
     local Camera = workspace.CurrentCamera
     local cameraPosition = Camera.CFrame.Position
     local modelPosition = r:GetPivot().Position
     Camera.CFrame = CFrame.new(cameraPosition, modelPosition)
+end)
 end)
 
 
